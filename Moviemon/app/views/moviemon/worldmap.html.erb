@@ -1,0 +1,11 @@
+<div id="main-map">
+  <%= image_tag("link.jpg", class: 'player', style: "top:#{$player[:position][1]}%;left:#{$player[:position][0]}%")%>
+  <% @map.each do |line| %>
+      <div class="line">
+        <% line.each do |box| %>
+            <div class="case"></div>
+        <% end %>
+      </div>
+  <% end %>
+</div>
+
