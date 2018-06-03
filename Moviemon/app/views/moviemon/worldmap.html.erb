@@ -1,9 +1,12 @@
 <div id="main-map">
-  <%= image_tag("link.jpg", class: 'player', style: "top:#{$player[:position][1]}%;left:#{$player[:position][0]}%")%>
-  <% @map.each do |line| %>
-      <div class="line">
-        <% line.each do |box| %>
-            <div class="case"></div>
+  <% @map.each_with_index do |line, y| %>
+      <div class="line" style="height: calc(<%= 100 / @map.length %>% - 1px)">
+        <% line.each_with_index do |box, x| %>
+            <div class="case">
+              <% if y == $player[:position][1] && x == $player[:position][0] %>
+                  <%= image_tag("link.jpg", class: '', style: 'height: 100%; width: 100%') %>
+              <% end %>
+            </div>
         <% end %>
       </div>
   <% end %>

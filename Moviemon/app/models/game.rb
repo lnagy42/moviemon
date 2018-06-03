@@ -15,24 +15,44 @@ class Game
     'tt1855325',
     'tt0113855',
     'tt0811080',
+    'tt0106062',
+    'tt0080684',
+    'tt4154756',
+    'tt0076759',
+    'tt0062622',
+    'tt0086190',
+    'tt0017136',
+    'tt0083658',
+    'tt1856101',
+    'tt0114746',
+    'tt5691024'
     ]
+  MAP_SIZE = 10
 
   # initialiser une partie
   def initialize
   end
 
+  def map_size
+    MAP_SIZE
+  end
+
   # charger une partie enregistrée
   def load
-    file = File.read("/tmp/backup.json")
-    data_hash = JSON.parse(file, :symbolize_names => true)
-    $player = data_hash[$player[:slot] - 1]
+    unless File.exist?("/tmp/backup.json")
+      false
+    else
+      file = File.read("/tmp/backup.json")
+      data_hash = JSON.parse(file, :symbolize_names => true)
+      $player = data_hash[$player[:slot] - 1]
+    end
   end
 
   # sauvegarder une partie
   def save
     unless File.exist?("/tmp/backup.json")
       File.open("/tmp/backup.json", "w+") do |f|
-        tab = [{}, {}, {}]
+        tab = [false, false, false]
         tab[$player[:slot] - 1] = $player
         f.write(JSON.pretty_generate(tab))
       end
@@ -59,14 +79,16 @@ class Game
           name: data['Title'],
           strength: (data['imdbRating'].to_f).to_i,
           rating: data['imdbRating'],
-          life: (data['imdbRating'].to_f * 10).to_i,
-          actors: data['Actors'],
+          life: (data['imdbRating'].to_f * 6).to_i,
           year: data['Year'],
           image: data['Poster'],
+          genre: data['Genre'],
+          synopsis: data['Plot'],
           director: data['Director'],
           catched: false,
       }
     }
+    movies_selection = movies.sample(7)
   end
 
 

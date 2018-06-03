@@ -1,9 +1,11 @@
 <div class="battle">
-  <%= image_tag("#{$selected[:image]}", class: 'monster-battle') %>
   <div class="battletext">
-    <p class="director"><%= $selected[:director] %></p>
+    <%= image_tag("#{$selected[:image]}", class: 'monster-battle') %>
     <p class="monster-name"><%= $selected[:name] %></p>
-    <p class="life"><%= $selected[:life] %></p>
-    <p class="playerlife"><%= $player[:life] %></p>
+    <p class="director"><%= $selected[:director] %></p>
+    <p class="life">Moviemon Life : <%= $selected[:life] %></p>
+    <p class="playerlife">Player Life : <%= $player[:life] %></p>
+    <p class="run-button">[B]=>Run</p>
+    <p class="fight-button">[A]=>Fight</p>
   </div>
 </div>

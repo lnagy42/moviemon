@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   get 'battle' => 'moviemon#battle'
   get 'save' => 'moviemon#save'
   get 'loadgame'=> 'moviemon#loadgame'
+  get 'victory' => 'moviemon#victory'
+  get 'defeat' => 'moviemon#defeat'
+  get 'coward' => 'moviemon#coward'
+  get 'endofgame' => 'moviemon#endofgame'
+  get 'nodata' => 'moviemon#nodata'
 
   # input
   get '/power' => 'moviemon#power'
